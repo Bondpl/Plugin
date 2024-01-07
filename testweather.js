@@ -1,5 +1,8 @@
+const config = require('./config');
+
+const apiKey = config.api_key;
 async function fetchData() {
-    const url = 'https://api.weatherapi.com/v1/current.json?key=***REMOVED***&q=51.936619,15.508690';
+    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=51.936619,15.508690`;
 
     try {
         const response = await fetch(url);
