@@ -1,3 +1,5 @@
 module.exports = {
-    api_key: 'Your API key',
+    api_key: '***REMOVED***',
 };
+
+

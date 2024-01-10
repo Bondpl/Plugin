@@ -1,0 +1,11 @@
+{
+    "name": "Weather for zg",
+    "version": "1.0.0",
+    "description": "show temperature ",
+    "manifest_version": 3,
+    "author": "Sampurna Chapagain",
+    "action":{
+        "default_popup": "site.html",
+        "default_title": "Latest Covid Report"
+    }
+}
