@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "show temperature ",
     "manifest_version": 3,
-    "author": "Sampurna Chapagain",
+    "author": "Me",
     "action":{
         "default_popup": "site.html",
         "default_title": "Latest Covid Report"
