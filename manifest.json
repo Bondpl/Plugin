@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "description": "show temperature ",
     "manifest_version": 3,
-    "author": "Me",
+    "author": "Bond",
     "action":{
         "default_popup": "site.html",
-        "default_title": "Latest Covid Report"
+        "default_title": "esa totalna"
     }
 }
