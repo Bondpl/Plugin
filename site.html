@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <title>Chart.js example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dupa.css"></script>
+</head>
+
+<body >
+<div id="chart">
+    <canvas id="myChart" width="200" height="100"></canvas>
+</div>
+<script>
+
+
+    function getDayOfWeek(dateString) {
+        const date = new Date(dateString);
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        return days[date.getDay()];
+    }
+
+    async function ChartIt(){
+        const weatherData = await getWeather();
+        const ctx = document.getElementById('myChart');
+
+        const placeElement = document.getElementById("place");
+        placeElement.innerHTML = weatherData.location.name;
+
+        console.log(weatherData.forecast.forecastday.map(day => day.day.maxtemp_c));
+        const {forecast: {forecastday}} = weatherData;
+        console.log(forecastday);
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: forecastday.map(day => getDayOfWeek(day.date)),
+                datasets: [{
+                    label: 'Temperature in celsius',
+                    backgroundColor: 'rgba(227,203,12,0.93)',
+                    data: forecastday.map(day => day.day.maxtemp_c),
+                    borderWidth: 0,
+                    inflateAmount: 2
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            },
+            legend: {
+                display: false
+            }
+        });
+    }
+
+    async function getWeather(){
+        const apiKey = "***REMOVED***";
+        let resData;
+        async function fetchData() {
+            const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=51.936619,15.508690&days=3`;
+
+            try {
+                const response = await fetch(url);
+                resData = await response.json();
+            } catch (error) {
+                console.error('Error fetching weather data:', error);
+            }
+        }
+        await fetchData();
+        return resData;
+    }
+
+    ChartIt();
+</script>
+<div id="place">place</div>
+</body>
+</html>

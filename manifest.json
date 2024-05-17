@@ -1,0 +1,11 @@
+{
+    "name": "Forecast for zg",
+    "version": "1.0.0",
+    "description": "show temperature 3 days ahead",
+    "manifest_version": 3,
+    "author": "Bond",
+    "action":{
+        "default_popup": "site.html",
+        "default_title": "esa totalna"
+    }
+}
